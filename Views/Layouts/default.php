@@ -16,7 +16,6 @@
     <link rel="apple-touch-startup-image" href="<?= Assets::setAssets('img/mainlogo.png') ?>">
     <link rel="manifest" href="http://localhost/ligne_php_pwa/manifest.json">
     <link rel="stylesheet" href="<?= Assets::setAssets('css/style.css')?>">
-    <script type="text/javascript" src="<?= Assets::setAssets('js/ligne_route.js') ?>"></script>
 </head>
 <body>
 <div class="container" style="margin: auto;text-align:center;font-family: sans-serif;">
