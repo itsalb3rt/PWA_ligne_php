@@ -1,40 +1,91 @@
-# Ligne Framework 🐘
+Convierte tu web tradicional en una PWA **Progressive Web Apps (PWA)** con este modelo y un mínimo de esfuerzo.
+
+Las aplicaciones web progresivas comienzan con un sitio / aplicación web tradicional y se mejoran progresivamente con características modernas. 
+Cuando los sitios están seguros(**HTTPS**), pueden aprovechar los **ServiceWorkers** para proporcionar soporte fuera de línea (**offline**), las **notificaciones Push** pueden ayudar a volver a atraer a los usuarios, y los **Manifests** de las aplicaciones web les permiten a los usuarios instalar PWA junto con las aplicaciones nativas.
 
 ---
 
-Ligne es un "Framework" **MVC** que ejecuta PHP 7.1.3 o superior. Prácticamente ya todo está preparado, solo necesita realizar algunas configuraciones mínimas y puedes comenzar a trabajar, las distintas partes de Ligne funcionan bien juntas o por separado.
-
-El objetivo de esta descripción general es presentar los conceptos generales en Ligne y ofrecerle una descripción general rápida de cómo se implementan esos conceptos.
-
-**Convenciones sobre la configuración**
-
-Ligne proporciona una estructura organizativa básica que cubre nombres de clase, nombres de archivo y otras convenciones. Si bien las convenciones toman algo de tiempo para aprender, al seguir las convenciones que proporciona Ligne puede evitar una configuración innecesaria y hacer una estructura de aplicación uniforme que simplifique el trabajo con varios proyectos.
+**Estructura básica;**
 
 
-## 📚Documentación
+[![](https://i.imgur.com/l44DNn8.png)](https://i.imgur.com/l44DNn8.png)
 
-El siguiente enlace te lleva a la documentación, la misma es actualizada con cada actualización del framework por lo que puedes estar seguro que todos los nuevos cambios ya se incluyen en ella.
+**Configura tu PWA**
 
-https://itsalb3rt.github.io/ligne_php_framework_documentacion/Introduccion.htm
+---
 
-## 🏢Arquitectura Global
+`manifest.json`
 
-![](https://i.imgur.com/vDLo9hG.png)
 
-Al acceder a nuestro sitio web, el usuario será redireccionado
-automáticamente a Webroot / index.php gracias a dos archivos de
-acceso htaccess.
+```json
+{
+  "name": "PWA Name App",
+  "short_name": "PWANameApp",
+  "description": "Esta sería la descripción de mi PWA",
+  "background_color": "#2B2B2B",
+  "theme_color": "#2196F3",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "app/index",
+  "scope": "./",
+  "lang": "es-MX",
+  "icons": []
+  }
+```
+`sw.js`
 
-## Rutas
-Vista rapida de una **url** con el framework
+**CACHE_NAME** es el nombre con el que el navegador almacenara la cache de tu app
 
-![enter image description here](https://i.imgur.com/kHEWAwK.png)
+**urlsToCache** son todos los recursos que deseas tu aplicación ejecute offline, archivos js, css, imágenes, secciones de tu app, etc…
 
-# 🚀 Creditos: 
+```javascript
+const CACHE_NAME = 'v1_pwa_app_cache',
+  urlsToCache = [
+        './',
+        'http://localhost/ligne_php_pwa/app/index',
+        'Webassets/css/style.css',
+        'Webassets/js/script.js',
+        'Webassets/img/mainlogo.png',
+        'Webassets/img/favicon.png'
+    ]
+```
+`views/Layouts/default.php`
 
-- **Desarrollado y mantenido por:** [@itsalb3rt](https://github.com/itsalb3rt "@itsalb3rt")
-- **FormBuilder :** [@joshcanhelp](https://github.com/joshcanhelp "@joshcanhelp")
-- **QueryBuilder PDOx :** [@izniburak](https://github.com/izniburak "@izniburak")
-- **Revision de documentacion:** Walner Betances
-- **Inspiración:** Yanibel Ligne Gutierrez Mercado
+Este archivo posee etiquetas **meta** que ayudan con la accesibilidad para la aplicación por lo que te recomiendo trabajar sobre el código de esta, copia el mismo en tu `layout` y estará todo listo.
 
+**Probar;**
+
+Descarga este repositorio y pruébalo en un servidor local o remoto *(de ser remoto debe tener certificado SSL ya que las PWA solo funcionan por HTTPS o en localhost)*
+
+**Instalar tu PWA:**
+
+[![](https://i.imgur.com/CeRx4Qs.png)](https://i.imgur.com/CeRx4Qs.png)
+
+
+**Listo!**
+
+[![](https://i.imgur.com/k8qpxTY.png)](https://i.imgur.com/k8qpxTY.png)
+
+Así tienes una aplicación web instalable tanto en **Windows, Mac, Android o IOS**;
+
+[![](https://i.imgur.com/B6s1BW0.png)](https://i.imgur.com/B6s1BW0.png)
+
+# Probar;
+
+En tu teléfono esta saldrá como una app más en tu cajón de aplicaciones, la puedes probar desde el siguiente enlace seguro;
+
+**[https://itsalb3rt.github.io/PWA_modelo/](https://itsalb3rt.github.io/PWA_modelo/ "https://itsalb3rt.github.io/PWA_modelo/")**
+
+<img src="https://i.imgur.com/Wy7vKHc.png" alt="drawing" width="300"/>
+
+---
+
+<img src="https://i.imgur.com/Znm9vuC.png" alt="drawing" width="300"/>
+
+---
+
+<img src="https://i.imgur.com/ZkGrzkN.png" alt="drawing" width="300"/>
+
+---
+
+**Cualquier sugerencia siempre es bien recibida.**
