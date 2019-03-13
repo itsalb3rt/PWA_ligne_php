@@ -7,7 +7,7 @@
 const CACHE_NAME = 'v1_pwa_app_cache',
     urlsToCache = [
         './',
-        'http://localhost/ligne_php_pwa/app/index',
+        'app/index',
         'Webassets/css/style.css',
         'Webassets/js/script.js',
         'Webassets/img/mainlogo.png',
